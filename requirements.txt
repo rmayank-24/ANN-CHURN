@@ -1,8 +1,9 @@
 tensorflow
 pandas
-numpy
-scikit-learn
 tensorboard
 matplotlib
 streamlit
-
+numpy>=1.24
+scikit-learn
+seaborn
+shap
