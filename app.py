@@ -95,11 +95,11 @@ with tab2:
     input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_input_df], axis=1)
     input_scaled = scaler.transform(input_data)
     prediction = model.predict(input_scaled)
-    prediction_proba = float(prediction[0][0])  # ✅ Convert float32 to Python float
+    prediction_proba = prediction[0][0].item()  # ✅ Convert np.float32 to native float
 
     st.markdown("---")
     st.subheader("🧠 Prediction Result")
-    st.progress(prediction_proba)
+    st.progress(prediction_proba)  # ✅ Now works without error
     st.caption(f"🔍 Probability of churn: {prediction_proba:.2%}")
 
     if prediction_proba > 0.5:
